@@ -1,0 +1,24 @@
+<odoo>
+    <data>
+         <record id="object0" model="kiakoi.object">
+             <field name="name">Python pour les nuls</field>
+             <field name="type">book</field>
+             <field name="borrower_id">borrower0</field>
+        </record>
+        <record id="object1" model="kiakoi.object">
+            <field name="name">Back to the future trilogy</field>
+            <field name="type">dvd</field>
+            <field name="borrower_id">borrower1</field>
+        </record>
+        <record id="object2" model="kiakoi.object">
+            <field name="name">4 étançons</field>
+            <field name="type">tool</field>
+            <field name="borrower_id">borrower2</field>
+        </record>
+        <record id="object3" model="kiakoi.object">
+            <field name="name">Astérix chez les bretons</field>
+            <field name="type">book</field>
+            <field name="borrower_id">borrower2</field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,53 @@
+<odoo>
+    <data>
+        <record model="ir.actions.act_window" id="borrower_list_action">
+            <field name="name">Borrower</field>
+            <field name="res_model">kiakoi.borrower</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Create the first borrower</p>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="borrower_tree_view">
+            <field name="name">borrower.tree</field>
+            <field name="model">kiakoi.borrower</field>
+            <field name="arch" type="xml">
+                <tree string="Borrower Tree">
+                    <field name="name"/>
+                    <field name="trusted"/>
+                    <field name="currently_borrowing"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="borrower_form_view">
+            <field name="name">borrower.form</field>
+            <field name="model">kiakoi.borrower</field>
+            <field name="arch" type="xml">
+                <form string="Borrower Form">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="trusted"/>
+                        </group>
+                        <notebook>
+                            <page string="Borrowing's history">
+                                <field name="borrowing_ids">
+                                    <tree string="Borrowing's history">
+                                        <field name="object_id"/>
+                                        <field name="borrow_date"/>
+                                        <field name="return_date"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+         <menuitem id="borrower_menu" name="Borrowers" parent="kiakoi_menu" action="borrower_list_action"/>
+    </data>
+</odoo>

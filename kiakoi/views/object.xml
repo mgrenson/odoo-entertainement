@@ -1,0 +1,64 @@
+<odoo>
+    <data>
+        <record model="ir.actions.act_window" id="object_list_action">
+            <field name="name">Objects</field>
+            <field name="res_model">kiakoi.object</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Create the first object</p>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="object_tree_view">
+            <field name="name">object.tree</field>
+            <field name="model">kiakoi.object</field>
+            <field name="arch" type="xml">
+                <tree string="Object Tree">
+                    <field name="name"/>
+                    <field name="type"/>
+                    <field name="currently_borrowed"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="object_form_view">
+            <field name="name">object.form</field>
+            <field name="model">kiakoi.object</field>
+            <field name="arch" type="xml">
+                <form string="Object Form">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="type"/>
+                        </group>
+                        <notebook>
+                            <page string="Borrowing's history">
+                                <field name="borrowing_ids">
+                                    <tree string="Borrowing's history" decoration-muted="return_date!=False">
+                                        <field name="borrower_id"/>
+                                        <field name="borrow_date"/>
+                                        <field name="return_date"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="object_search_view">
+            <field name="name">object.search</field>
+            <field name="model">kiakoi.object</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name"/>
+                    <field name="type"/>
+                </search>
+            </field>
+        </record>
+
+        <menuitem id="object_menu" name="Objects" parent="kiakoi_menu" action="object_list_action"/>
+    </data>
+</odoo>

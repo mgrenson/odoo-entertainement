@@ -1,0 +1,58 @@
+<odoo>
+    <data>
+        <record model="ir.actions.act_window" id="borrowing_list_action">
+            <field name="name">Borrowings</field>
+            <field name="res_model">kiakoi.borrowing</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Create the first borrowing</p>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="borrowing_tree_view">
+            <field name="name">borrowing.tree</field>
+            <field name="model">kiakoi.borrowing</field>
+            <field name="arch" type="xml">
+                <tree string="Borrowing Tree">
+                    <field name="object_id"/>
+                    <field name="borrower_id"/>
+                    <field name="borrow_date"/>
+                    <field name="return_date"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="borrowing_form_view">
+            <field name="name">borrowing.form</field>
+            <field name="model">kiakoi.borrowing</field>
+            <field name="arch" type="xml">
+                <form string="Borrowing Form">
+                    <sheet>
+                        <group>
+                            <field name="object_id"/>
+                            <field name="borrower_id"/>
+                            <field name="borrow_date"/>
+                            <field name="return_date"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="borrowing_search_view">
+            <field name="name">borrowing.search</field>
+            <field name="model">kiakoi.borrowing</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="object_id"/>
+                    <field name="borrower_id"/>
+                    <field name="borrow_date"/>
+                    <field name="return_date"/>
+                </search>
+            </field>
+        </record>
+
+        <menuitem id="borrowing_menu" name="Borrowings" parent="kiakoi_menu" action="borrowing_list_action"/>
+    </data>
+</odoo>

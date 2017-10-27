@@ -1,0 +1,13 @@
+<odoo>
+    <data>
+        <record id="borrower0" model="kiakoi.borrower">
+            <field name="name">Serge</field>
+        </record>
+        <record id="borrower1" model="kiakoi.borrower">
+            <field name="name">Jean</field>
+        </record>
+        <record id="borrower2" model="kiakoi.borrower">
+            <field name="name">Garcia</field>
+        </record>
+    </data>
+</odoo>

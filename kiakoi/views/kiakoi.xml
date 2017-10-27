@@ -1,0 +1,10 @@
+<odoo>
+    <data>
+        <!-- top level menu: no parent -->
+        <menuitem id="main_kiakoi_menu" name="KiaKoi"/>
+        <!-- A first level in the left side menu is needed
+             before using action= attribute -->
+        <menuitem id="kiakoi_menu" name="KiaKoi"
+                  parent="main_kiakoi_menu"/>
+    </data>
+</odoo>
