@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <!-- top level menu: no parent -->
+        <menuitem id="main_openacademy_menu" name="Open Academy"/>
+        <!-- A first level in the left side menu is needed
+             before using action= attribute -->
+        <menuitem id="openacademy_menu" name="Open Academy"
+                  parent="main_openacademy_menu"/>
+        <!-- the following menuitem should appear *after*
+             its parent openacademy_menu and *after* its
+             action course_list_action -->
+    </data>
+</odoo>
