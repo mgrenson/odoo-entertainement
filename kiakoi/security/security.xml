@@ -1,0 +1,10 @@
+<odoo>
+    <data>
+        <record id="kiakoi_reader" model="res.groups">
+            <field name="name">Kiakoi / Reader</field>
+        </record>
+        <record id="kiakoi_manager" model="res.groups">
+            <field name="name">Kiakoi / Manager</field>
+        </record>
+    </data>
+</odoo>

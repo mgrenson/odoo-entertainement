@@ -14,6 +14,8 @@ class Borrowing(models.Model):
     borrow_date = fields.Date(required=True)
     return_date = fields.Date(required=False)
 
+    color = fields.Integer()
+
     _sql_constraints = [
         ('borrow_before_return',
          'CHECK (return_date >= borrow_date)',

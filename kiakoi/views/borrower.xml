@@ -1,15 +1,17 @@
 <odoo>
     <data>
+        <!-- List -->
         <record model="ir.actions.act_window" id="borrower_list_action">
             <field name="name">Borrower</field>
             <field name="res_model">kiakoi.borrower</field>
             <field name="view_type">form</field>
-            <field name="view_mode">tree,form</field>
+            <field name="view_mode">tree,form,graph</field>
             <field name="help" type="html">
                 <p class="oe_view_nocontent_create">Create the first borrower</p>
             </field>
         </record>
 
+        <!-- List - Tree -->
         <record model="ir.ui.view" id="borrower_tree_view">
             <field name="name">borrower.tree</field>
             <field name="model">kiakoi.borrower</field>
@@ -22,6 +24,19 @@
             </field>
         </record>
 
+        <!-- List - Graph -->
+        <record model="ir.ui.view" id="borrower_graph_view">
+            <field name="name">borrower.graph</field>
+            <field name="model">kiakoi.borrower</field>
+            <field name="arch" type="xml">
+                <graph string="Current borrowings count">
+                    <field name="name"/>
+                    <field name="current_borrowings_count" type="measure"/>
+                </graph>
+            </field>
+        </record>
+
+        <!-- Form -->
         <record model="ir.ui.view" id="borrower_form_view">
             <field name="name">borrower.form</field>
             <field name="model">kiakoi.borrower</field>

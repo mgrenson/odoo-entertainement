@@ -1,15 +1,17 @@
 <odoo>
     <data>
+        <!-- List -->
         <record model="ir.actions.act_window" id="borrowing_list_action">
             <field name="name">Borrowings</field>
             <field name="res_model">kiakoi.borrowing</field>
             <field name="view_type">form</field>
-            <field name="view_mode">tree,form</field>
+            <field name="view_mode">tree,form,kanban,calendar</field>
             <field name="help" type="html">
                 <p class="oe_view_nocontent_create">Create the first borrowing</p>
             </field>
         </record>
 
+        <!-- List - Tree -->
         <record model="ir.ui.view" id="borrowing_tree_view">
             <field name="name">borrowing.tree</field>
             <field name="model">kiakoi.borrowing</field>
@@ -23,6 +25,80 @@
             </field>
         </record>
 
+       <!-- List - Calendar -->
+        <record model="ir.ui.view" id="borrowing_calendar_view">
+            <field name="name">borrowing.calendar</field>
+            <field name="model">kiakoi.borrowing</field>
+            <field name="arch" type="xml">
+                <calendar string="Borrowing calendar" date_start="borrow_date"
+                          date_stop="return_date"
+                          color="borrower_id">
+                    <field name="borrower_id"/>
+                    <field name="object_id"/>
+                </calendar>
+            </field>
+        </record>
+
+        <!-- List - Kanban -->
+        <record model="ir.ui.view" id="view_borrowing_kanban">
+            <field name="name">borrowing.kanban</field>
+            <field name="model">kiakoi.borrowing</field>
+            <field name="arch" type="xml">
+                <kanban default_group_by="object_id">
+                    <field name="borrower_id"/>
+                    <templates>
+                        <t t-name="kanban-box"><!--oe_kanban_color_{{kanban_getcolor(record.color.raw_value)}}-->
+                            <div t-attf-class="
+                                               oe_kanban_global_click_edit oe_semantic_html_override
+                                               oe_kanban_card {{record.group_fancy==1 ? 'oe_kanban_card_fancy' : ''}}">
+                                <div class="oe_dropdown_kanban">
+                                    <!-- dropdown menu -->
+                                    <div class="oe_dropdown_toggle">
+                                        <i class="fa fa-bars fa-lg"/>
+                                        <ul class="oe_dropdown_menu">
+                                            <li>
+                                                <a type="delete">Delete</a>
+                                            </li>
+                                            <li>
+                                                <ul class="oe_kanban_colorpicker"
+                                                    data-field="color"/>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="oe_clear"></div>
+                                </div>
+                                <div t-attf-class="oe_kanban_content">
+                                    Borrower:
+                                    <field name="borrower_id"/>
+                                    <br/>
+                                    Borrow date:
+                                    <field name="borrow_date"/>
+                                    <br/>
+                                    Return date:
+                                    <field name="return_date"/>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+        <!-- Search -->
+        <record model="ir.ui.view" id="borrowing_search_view">
+            <field name="name">borrowing.search</field>
+            <field name="model">kiakoi.borrowing</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="object_id"/>
+                    <field name="borrower_id"/>
+                    <field name="borrow_date"/>
+                    <field name="return_date"/>
+                </search>
+            </field>
+        </record>
+
+        <!-- Form -->
         <record model="ir.ui.view" id="borrowing_form_view">
             <field name="name">borrowing.form</field>
             <field name="model">kiakoi.borrowing</field>
@@ -37,19 +113,6 @@
                         </group>
                     </sheet>
                 </form>
-            </field>
-        </record>
-
-        <record model="ir.ui.view" id="borrowing_search_view">
-            <field name="name">borrowing.search</field>
-            <field name="model">kiakoi.borrowing</field>
-            <field name="arch" type="xml">
-                <search>
-                    <field name="object_id"/>
-                    <field name="borrower_id"/>
-                    <field name="borrow_date"/>
-                    <field name="return_date"/>
-                </search>
             </field>
         </record>
 

@@ -1,5 +1,6 @@
 <odoo>
     <data>
+        <!-- List -->
         <record model="ir.actions.act_window" id="object_list_action">
             <field name="name">Objects</field>
             <field name="res_model">kiakoi.object</field>
@@ -10,6 +11,7 @@
             </field>
         </record>
 
+        <!-- List - Tree -->
         <record model="ir.ui.view" id="object_tree_view">
             <field name="name">object.tree</field>
             <field name="model">kiakoi.object</field>
@@ -22,6 +24,19 @@
             </field>
         </record>
 
+        <!-- Search -->
+        <record model="ir.ui.view" id="object_search_view">
+            <field name="name">object.search</field>
+            <field name="model">kiakoi.object</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name"/>
+                    <field name="type"/>
+                </search>
+            </field>
+        </record>
+
+        <!-- Form -->
         <record model="ir.ui.view" id="object_form_view">
             <field name="name">object.form</field>
             <field name="model">kiakoi.object</field>
@@ -48,14 +63,19 @@
             </field>
         </record>
 
-        <record model="ir.ui.view" id="object_search_view">
-            <field name="name">object.search</field>
-            <field name="model">kiakoi.object</field>
+        <record model="ir.ui.view" id="object_borrowing_form_view">
+            <field name="name">borrowing.form</field>
+            <field name="model">kiakoi.borrowing</field>
             <field name="arch" type="xml">
-                <search>
-                    <field name="name"/>
-                    <field name="type"/>
-                </search>
+                <form string="Borrowing Form">
+                    <sheet>
+                        <group>
+                            <field name="borrower_id"/>
+                            <field name="borrow_date"/>
+                            <field name="return_date"/>
+                        </group>
+                    </sheet>
+                </form>
             </field>
         </record>
 

@@ -1,2 +1,9 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_kiakoi_kiakoi,kiakoi.kiakoi,model_kiakoi_kiakoi,,1,0,0,0
+read_kiakoi_borrowings,Read kiakoi borrowings,model_kiakoi_borrowing,kiakoi_reader,1,0,0,0
+read_kiakoi_borrowers,Read kiakoi borrower,model_kiakoi_borrower,kiakoi_reader,1,0,0,0
+read_kiakoi_objects,Read kiakoi objects,model_kiakoi_object,kiakoi_reader,1,0,0,0
+manage_kiakoi_borrowings,Manage kiakoi borrowings,model_kiakoi_borrowing,kiakoi_manager,1,1,1,1
+manage_kiakoi_borrowers,Manage kiakoi borrowers,model_kiakoi_borrower,kiakoi_manager,1,1,1,1
+manage_kiakoi_objects,Manage kiakoi objects,model_kiakoi_object,kiakoi_manager,1,1,1,1
+
+

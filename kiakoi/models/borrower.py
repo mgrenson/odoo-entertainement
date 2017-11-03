@@ -15,8 +15,10 @@ class Borrower(models.Model):
     current_borrowings_id = fields.One2many('kiakoi.borrowing', 'borrower_id', string="Current borrowings",
                                            domain=[('return_date', '=', False)])
 
-    currently_borrowing = fields.Boolean(compute='_compute_currently_borrowing', string="Currently borrowing some stuff")
 
+    # -------- currently_borrowing
+    currently_borrowing = fields.Boolean(compute='_compute_currently_borrowing',
+                                         string="Currently borrowing some stuff")
     @api.multi
     def _compute_currently_borrowing(self):
         """Determine if the borrower is currently borrowing some stuff"""
@@ -26,6 +28,17 @@ class Borrower(models.Model):
                 record.currently_borrowing = True
             else:
                 record.currently_borrowing = False
+
+
+    #-------- current_borrowings_count
+    current_borrowings_count = fields.Integer(string="Current borrowings count",
+                                                compute='_get_current_borrowings_count', store=True)
+    @api.depends('current_borrowings_id')
+    def _get_current_borrowings_count(self):
+        """Determine the number of current borrowings"""
+        for r in self:
+            r.current_borrowings_count = len(r.current_borrowings_id)
+
 
     # FIXME: An unique constraint on name should be applicated to the name field of the inherit model : sql or python ?
 
